@@ -4,10 +4,26 @@ import { Socket } from 'socket.io';
 import { usuariosConectados } from '../sockets/socket';
 import { GraficaData } from '../classes/grafica';
 import { EncuestaData } from '../classes/encuesta';
+import { Mapa } from '../classes/mapa';
 
 const router = Router();
 const grafica = new GraficaData();
 const encuesta = new EncuestaData();
+const mapa = new Mapa();
+
+/** MAPA Mapbox */
+router.get('/mapa',  ( req , res ) => { 
+
+    res.json({
+        ok: true,
+        datos: mapa.getMarcadores()
+    });
+
+});
+
+
+
+/** GRAFICAS */
 
 router.get('/grafica',  ( req , res ) => { 
 
